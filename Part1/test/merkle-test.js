@@ -46,7 +46,7 @@ describe("MerkleTree", function () {
 
     it("Insert two new leaves and verify the first leaf in an inclusion proof", async function () {
         await merkleTree.insertLeaf(1);
-        await merkleTree.insertLeaf(2);
+        await merkleTree.insertLeaf(2);       
 
         const node9 = (await merkleTree.hashes(9)).toString();
         const node13 = (await merkleTree.hashes(13)).toString();
@@ -68,6 +68,18 @@ describe("MerkleTree", function () {
         const b = [[argv[2], argv[3]], [argv[4], argv[5]]];
         const c = [argv[6], argv[7]];
         const input = argv.slice(8);
+
+        //console.log('const input =',input);
+
+        //const node14 = (await merkleTree.hashes(14)).toString();
+        //const node8 = (await merkleTree.hashes(8)).toString();
+        //const node12 = (await merkleTree.hashes(12)).toString();
+        //console.log('const node14 =',node14);
+
+        //console.log('const node9 =',node9);
+        //console.log('const node13 =',node13);
+        //console.log('const node8 =',node8);
+        //console.log('const node12 =',node12);
 
         expect(await merkleTree.verify(a, b, c, input)).to.be.true;
 
